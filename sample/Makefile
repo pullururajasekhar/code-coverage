@@ -11,7 +11,7 @@ PYTHON=/usr/bin/python
 SH=/bin/sh
 ECHO=/bin/echo
 
-all: sample_gcov
+all: show_coverage_http 
 
 sample_gcov : sample.c
 	$(CC) $(CFLAGS) -o $@ $<	
@@ -24,16 +24,16 @@ generate_coverage: sample_gcov
 	$(ECHO) "generating html files for coverage data"
 	$(GENHTML) -o sample_coverage_data sample_coverage.info
 
-show_coverage_http: sample_coverage_data
+show_coverage_http: generate_coverage sample_coverage_data
 	$(ECHO) "starting http server to show coverage data"
 	cd sample_coverage_data
 	$(PYTHON) -m "SimpleHTTPServer"
 
-clean:
-	-$(RM) -f sample_gcov 
-
-
-clean_coverage: clean 
+clean_coverage:
 	-$(RM) *.gcda *.gcno  
 	-$(RM) sample_coverage.info
 	-$(RM) -rf sample_coverage_data 
+
+clean: clean_coverage 
+	-$(RM) -f sample_gcov 
+
