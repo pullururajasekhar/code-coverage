@@ -20,7 +20,7 @@ Below command will generate the code coverage data html files for every
 the lines covered and not covered.
 $genhtml -o output_dir coverage.info 
 
-check out this ![sample coverage](https://raw.githubusercontent.com/pullururajasekhar/code-coverage/sample/sample_coverage_html_files/sample_c_coverage.png)
+check out this ![sample coverage](https://github.com/pullururajasekhar/code-coverage/blob/master/sample/sample_coverage_html_files/sample_c_coverage.png)
 for sample output
 
 Below information provides details of the files in this repository:
